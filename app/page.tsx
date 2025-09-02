@@ -161,25 +161,36 @@ export default function Home() {
     }
 
     if (mutedInstrument === instrumentName) {
-      // Unmuting the current instrument
+      // Unmuting the current instrument: show all parts
       setMutedInstrument(null);
       audio.src = mainAudioSrc; // Switch back to main audio
-      osmd.PlaybackManager.volumeUnmute(instrumentId); // Unmute in OSMD
-      console.log(`Unmuted ${instrumentName}. Audio source set to: ${audio.src}`);
+      osmd.Sheet.Instruments.forEach(inst => {
+        inst.Audible = true; // Make all instruments audible (and visible)
+      });
+      osmd.render(); // Re-render to show all parts
+      console.log(`Unmuted ${instrumentName}. Showing all parts. Audio source set to: ${audio.src}`);
     } else {
-      // Muting a new instrument
+      // Muting a new instrument: show only the selected instrument's part
       if (mutedInstrument !== null) {
-        // Unmute previously muted instrument first
+        // Unmute previously muted instrument (audio only, visual handled below)
         const prevMutedId = instrumentMapRef.current.get(mutedInstrument);
         if (prevMutedId !== undefined) {
           osmd.PlaybackManager.volumeUnmute(prevMutedId);
-          console.log(`Unmuted previous instrument: ${mutedInstrument}`);
+          console.log(`Unmuted previous instrument audio: ${mutedInstrument}`);
         }
       }
       setMutedInstrument(instrumentName);
       audio.src = instrumentPlayAlongMap[instrumentName]; // Switch to play-along audio
-      osmd.PlaybackManager.volumeMute(instrumentId); // Mute in OSMD
-      console.log(`Muted ${instrumentName}. Audio source set to: ${audio.src}`);
+
+      osmd.Sheet.Instruments.forEach(inst => {
+        if (inst.Id === instrumentId) {
+          inst.Audible = true; // Make selected instrument audible (and visible)
+        } else {
+          inst.Audible = false; // Make other instruments inaudible (and hidden)
+        }
+      });
+      osmd.render(); // Re-render to show only selected part
+      console.log(`Muted ${instrumentName}. Showing only ${instrumentName} part. Audio source set to: ${audio.src}`);
     }
 
     // Re-initialize OSMD PlaybackManager after changing audio source
