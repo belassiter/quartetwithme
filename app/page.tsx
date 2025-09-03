@@ -160,51 +160,62 @@ export default function Home() {
       setIsPlaying(false); // Update state immediately
     }
 
+    // Store the current audio time before changing src
+    const currentAudioTime = audio.currentTime;
+
     if (mutedInstrument === instrumentName) {
-      // Unmuting the current instrument: show all parts
+      // Unmuting the current instrument: show all parts and play main audio
       setMutedInstrument(null);
-      audio.src = mainAudioSrc; // Switch back to main audio
+      audio.src = mainAudioSrc;
       osmd.Sheet.Instruments.forEach(inst => {
-        inst.Audible = true; // Make all instruments audible (and visible)
+        inst.Visible = true;
       });
-      osmd.render(); // Re-render to show all parts
-      console.log(`Unmuted ${instrumentName}. Showing all parts. Audio source set to: ${audio.src}`);
+      osmd.render();
     } else {
-      // Muting a new instrument: show only the selected instrument's part
+      // Muting a new instrument: show only the selected instrument's part and play its audio
       if (mutedInstrument !== null) {
-        // Unmute previously muted instrument (audio only, visual handled below)
         const prevMutedId = instrumentMapRef.current.get(mutedInstrument);
         if (prevMutedId !== undefined) {
           osmd.PlaybackManager.volumeUnmute(prevMutedId);
-          console.log(`Unmuted previous instrument audio: ${mutedInstrument}`);
         }
       }
       setMutedInstrument(instrumentName);
-      audio.src = instrumentPlayAlongMap[instrumentName]; // Switch to play-along audio
-
+      audio.src = instrumentPlayAlongMap[instrumentName];
       osmd.Sheet.Instruments.forEach(inst => {
         if (inst.Id === instrumentId) {
-          inst.Audible = true; // Make selected instrument audible (and visible)
+          inst.Visible = true;
+          osmd.PlaybackManager.volumeUnmute(inst.Id);
         } else {
-          inst.Audible = false; // Make other instruments inaudible (and hidden)
+          inst.Visible = false;
+          osmd.PlaybackManager.volumeMute(inst.Id);
         }
       });
-      osmd.render(); // Re-render to show only selected part
-      console.log(`Muted ${instrumentName}. Showing only ${instrumentName} part. Audio source set to: ${audio.src}`);
+      osmd.render();
     }
 
     // Re-initialize OSMD PlaybackManager after changing audio source
-    // This is crucial to refresh its internal references to the audio element
     osmd.PlaybackManager.initialize(osmd.Sheet.MusicPartManager);
 
     // If it was playing, restart playback from current position
     if (wasPlaying) {
-      // We need to ensure the audio is ready before playing
-      // A small timeout or listening for 'canplay' event might be needed
-      // For now, let's try a simple play
-      audio.play().catch(e => console.error("Audio play failed after mute toggle:", e));
-      osmd.PlaybackManager.play(); // Restart OSMD playback
-      setIsPlaying(true); // Update state
+      // Listen for 'canplaythrough' event before playing and syncing
+      const handleCanPlayThrough = () => {
+        audio.removeEventListener('canplaythrough', handleCanPlayThrough); // Remove listener to prevent multiple calls
+
+        // Set audio currentTime back to where it was before src change, adjusted by offset
+        audio.currentTime = currentAudioTime;
+
+        audio.play().catch(e => console.error("Audio play failed after mute toggle:", e));
+
+        // Re-sync OSMD playback manager with the new audio time
+        const targetMs = (audio.currentTime - offsetRef.current) * 1000;
+        osmd.PlaybackManager.setPlaybackStart(targetMs);
+        osmd.PlaybackManager.play();
+        setIsPlaying(true);
+      };
+
+      audio.addEventListener('canplaythrough', handleCanPlayThrough);
+      audio.load(); // Explicitly load the new audio source
     }
   };
 
