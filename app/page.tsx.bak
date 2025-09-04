@@ -1,11 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { OpenSheetMusicDisplay, IPlaybackListener, IAudioMetronomePlayer, Fraction, PlaybackManager, BasicAudioPlayer, LinearTimingSource, PlaybackState } from "opensheetmusicdisplay";
+import { OpenSheetMusicDisplay } from "../osmd-extended-local/src/OpenSheetMusicDisplay/OpenSheetMusicDisplay";
+import { IPlaybackListener } from "../osmd-extended-local/src/Common/Interfaces/IPlaybackListener";
+import { IAudioMetronomePlayer } from "../osmd-extended-local/src/Common/Interfaces/IAudioMetronomePlayer";
+import { Fraction } from "../osmd-extended-local/src/Common/DataObjects/Fraction";
+import { PlaybackManager } from "../osmd-extended-local/src/Playback/PlaybackManager";
+import { BasicAudioPlayer } from "../osmd-extended-local/src/Playback/BasicAudioPlayer";
+import { LinearTimingSource } from "../osmd-extended-local/src/Playback/TimingSources/LinearTimingSource";
+import { PlaybackState } from "../osmd-extended-local";
 
 export default function Home() {
   const sheetMusicContainerRef = useRef<HTMLDivElement>(null);
-  const osmdRef = useRef<OpenSheetMusicDisplay | null>(null);
+  const osmdRef = useRef<OpenSheetMusicDisplay>();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -55,6 +62,7 @@ export default function Home() {
       const wasPlaying = isPlaying; // Store current playing state
       if (wasPlaying) {
         osmd.PlaybackManager.pause();
+        osmd.PlaybackManager.reset(); // Reset to apply new settings
       }
 
       osmd.PlaybackManager.timingSource.setBpm(newTempo);
@@ -228,8 +236,6 @@ export default function Home() {
 
     // Re-initialize OSMD PlaybackManager after changing audio source
     osmd.PlaybackManager.initialize(osmd.Sheet.MusicPartManager);
-    // Re-apply current tempo after re-initialization
-    osmd.PlaybackManager.timingSource.setBpm(tempo);
 
     // If it was playing, restart playback from current position
     if (wasPlaying) {
@@ -259,7 +265,6 @@ export default function Home() {
       const container = sheetMusicContainerRef.current;
       const initOSMD = async () => {
         console.log("initOSMD called");
-        try {
                 class DummyMetronomePlayer implements IAudioMetronomePlayer {
           play(bpm: number): void {}
           stop(): void {}
@@ -304,9 +309,7 @@ export default function Home() {
                                 osmd.PlaybackManager = playbackManager;
         osmd.PlaybackManager.DoPlayback = true;
 
-        console.log("Attempting to load MXL file:", "/assets/take_it_all_away_sax_quartet_SATB.mxl");
         await osmd.load("/assets/take_it_all_away_sax_quartet_SATB.mxl");
-        console.log("MXL file loaded successfully.");
 
         // Populate instrumentMapRef
         if (osmd.Sheet?.Instruments) {
@@ -349,13 +352,13 @@ export default function Home() {
         // Custom Playback Listener
         class MyPlaybackListener implements IPlaybackListener {
           private offsetRef: React.MutableRefObject<number>;
-          private osmdRef: React.MutableRefObject<OpenSheetMusicDisplay | null>;
+          private osmdRef: React.MutableRefObject<OpenSheetMusicDisplay | undefined>;
           private tempoRef: React.MutableRefObject<number | null>;
           private lastMeasureNumber: number = -1; // New property to track the last measure logged
 
           constructor(
             offsetRef: React.MutableRefObject<number>,
-            osmdRef: React.MutableRefObject<OpenSheetMusicDisplay | null>,
+            osmdRef: React.MutableRefObject<OpenSheetMusicDisplay | undefined>,
             tempoRef: React.MutableRefObject<number | null>
           ) {
             this.offsetRef = offsetRef;
@@ -374,7 +377,7 @@ export default function Home() {
                 // Now check if currentMeasure and tempo are available
                 if (playbackManager.CursorIterator?.CurrentMeasure && playbackManager.currentBPM) {
                   const currentMeasure = playbackManager.CursorIterator.CurrentMeasure.MeasureNumber;
-                  const currentBpm = this.tempoRef.current;
+                  const currentBpm = playbackManager.currentBPM;
 
                   console.log(`Debug: currentMeasure = ${currentMeasure}, lastMeasureNumber = ${this.lastMeasureNumber}`);
 
@@ -420,10 +423,7 @@ export default function Home() {
 
         setIsLoaded(true);
         console.log("OSMD and audio components loaded. Current tempo state:", tempo);
-      } catch (err) {
-        console.error("Error during OSMD initialization or MXL loading:", err);
-      }
-    };
+      };
 
       initOSMD().catch((err) => {
         console.error("Error initializing OSMD:", err);
