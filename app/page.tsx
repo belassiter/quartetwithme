@@ -480,29 +480,29 @@ export default function Home() {
         {/* Instrument Mute Toggles */}
         <button
           onClick={() => handleMuteToggle("Soprano")}
-          disabled={!isLoaded}
-          className={`ml-4 px-4 py-2 rounded ${mutedInstrument === "Soprano" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700"}`}
+          disabled={!isLoaded || isPlaying}
+          className={`ml-4 px-4 py-2 rounded ${!isLoaded || isPlaying ? 'opacity-50 cursor-not-allowed' : (mutedInstrument === "Soprano" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700")}`}
         >
           Soprano
         </button>
         <button
           onClick={() => handleMuteToggle("Alto")}
-          disabled={!isLoaded}
-          className={`ml-4 px-4 py-2 rounded ${mutedInstrument === "Alto" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700"}`}
+          disabled={!isLoaded || isPlaying}
+          className={`ml-4 px-4 py-2 rounded ${!isLoaded || isPlaying ? 'opacity-50 cursor-not-allowed' : (mutedInstrument === "Alto" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700")}`}
         >
           Alto
         </button>
         <button
           onClick={() => handleMuteToggle("Tenor")}
-          disabled={!isLoaded}
-          className={`ml-4 px-4 py-2 rounded ${mutedInstrument === "Tenor" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700"}`}
+          disabled={!isLoaded || isPlaying}
+          className={`ml-4 px-4 py-2 rounded ${!isLoaded || isPlaying ? 'opacity-50 cursor-not-allowed' : (mutedInstrument === "Tenor" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700")}`}
         >
           Tenor
         </button>
         <button
           onClick={() => handleMuteToggle("Bari")}
-          disabled={!isLoaded}
-          className={`ml-4 px-4 py-2 rounded ${mutedInstrument === "Bari" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700"}`}
+          disabled={!isLoaded || isPlaying}
+          className={`ml-4 px-4 py-2 rounded ${!isLoaded || isPlaying ? 'opacity-50 cursor-not-allowed' : (mutedInstrument === "Bari" ? "bg-yellow-500 text-black" : "bg-gray-500 text-white hover:bg-gray-700")}`}
         >
           Bari
         </button>
