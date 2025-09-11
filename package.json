@@ -21,7 +21,8 @@
     "osmd-types-player": "git+https://github.com/opensheetmusicdisplay/osmd-types-player.git",
     "raw-loader": "^4.0.2",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "tone": "^15.1.22"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

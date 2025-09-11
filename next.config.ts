@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
       loader: 'html-loader',
     });
 
+    // Exclude the react-native-osmd example directory
+    config.module.rules.push({
+      test: /osmd-extended-local\/osmd-native\/react-native-osmd\/example\//,
+      loader: 'ignore-loader',
+    });
+
     return config;
   },
 };
