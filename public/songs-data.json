@@ -1,0 +1,149 @@
+[
+  {
+    "id": "battlefield_1942",
+    "name": "Battlefield 1942",
+    "mainAudio": "/assets/battlefield_1942_EsQ.mp3",
+    "sheetMusic": "/assets/battlefield_1942_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/battlefield_1942_EsQ.mp3",
+      "Alto": "/assets/battlefield_1942_playalong_alto.mp3",
+      "Bari": "/assets/battlefield_1942_playalong_bari.mp3",
+      "Soprano": "/assets/battlefield_1942_playalong_soprano.mp3",
+      "Tenor": "/assets/battlefield_1942_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "flyswatter",
+    "name": "Flyswatter",
+    "mainAudio": "/assets/flyswatter_EsQ.mp3",
+    "sheetMusic": "/assets/flyswatter_sax_quartet_AATB.mxl",
+    "instruments": {
+      "Main": "/assets/flyswatter_EsQ.mp3",
+      "Alto 1": "/assets/flyswatter_playalong_alto1.mp3",
+      "Alto 2": "/assets/flyswatter_playalong_alto2.mp3",
+      "Tenor": "/assets/flyswatter_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "ghostbusters",
+    "name": "Ghostbusters",
+    "mainAudio": "/assets/ghostbusters_EsQ.mp3",
+    "sheetMusic": "/assets/ghostbusters_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/ghostbusters_EsQ.mp3",
+      "Alto": "/assets/ghostbusters_playalong_alto.mp3",
+      "Soprano": "/assets/ghostbusters_playalong_soprano.mp3",
+      "Tenor": "/assets/ghostbusters_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "happy",
+    "name": "Happy",
+    "mainAudio": "/assets/happy_EsQ.mp3",
+    "sheetMusic": "/assets/happy_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/happy_EsQ.mp3",
+      "Alto": "/assets/happy_playalong_alto.mp3",
+      "Soprano": "/assets/happy_playalong_soprano.mp3",
+      "Tenor": "/assets/happy_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "i_get_around",
+    "name": "I Get Around",
+    "mainAudio": "/assets/i_get_around_EsQ.mp3",
+    "sheetMusic": "/assets/i_get_around_sax_quartet_AATB.mxl",
+    "instruments": {
+      "Main": "/assets/i_get_around_EsQ.mp3",
+      "Alto 1": "/assets/i_get_around_playalong_alto1.mp3",
+      "Alto 2": "/assets/i_get_around_playalong_alto2.mp3",
+      "Tenor": "/assets/i_get_around_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "kens_theme",
+    "name": "Kens Theme",
+    "mainAudio": "/assets/kens_theme_EsQ.mp3",
+    "sheetMusic": "/assets/kens_theme_sax_quartet_AATB.mxl",
+    "instruments": {
+      "Main": "/assets/kens_theme_EsQ.mp3",
+      "Alto 1": "/assets/kens_theme_playalong_alto1.mp3",
+      "Alto 2": "/assets/kens_theme_playalong_alto2.mp3",
+      "Tenor": "/assets/kens_theme_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "lysenko",
+    "name": "Lysenko",
+    "mainAudio": "/assets/lysenko_EsQ.mp3",
+    "sheetMusic": "/assets/lysenko_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/lysenko_EsQ.mp3",
+      "Alto": "/assets/lysenko_playalong_alto.mp3",
+      "Bari": "/assets/lysenko_playalong_bari.mp3",
+      "Soprano": "/assets/lysenko_playalong_soprano.mp3",
+      "Tenor": "/assets/lysenko_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "pinball_number_count",
+    "name": "Pinball Number Count",
+    "mainAudio": "/assets/pinball_number_count_EsQ.mp3",
+    "sheetMusic": "/assets/pinball_number_count_sax_quartet_AATB.mxl",
+    "instruments": {
+      "Main": "/assets/pinball_number_count_EsQ.mp3",
+      "Alto 1": "/assets/pinball_number_count_playalong_alto1.mp3",
+      "Alto 2": "/assets/pinball_number_count_playalong_alto2.mp3",
+      "Tenor": "/assets/pinball_number_count_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "sugar_rum_cherry",
+    "name": "Sugar Rum Cherry",
+    "mainAudio": "/assets/sugar_rum_cherry_EsQ.mp3",
+    "sheetMusic": "/assets/sugar_rum_cherry_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/sugar_rum_cherry_EsQ.mp3",
+      "Alto": "/assets/sugar_rum_cherry_playalong_alto.mp3",
+      "Soprano": "/assets/sugar_rum_cherry_playalong_soprano.mp3",
+      "Tenor": "/assets/sugar_rum_cherry_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "take_it_all_away",
+    "name": "Take It All Away",
+    "mainAudio": "/assets/take_it_all_away_EsQ.mp3",
+    "sheetMusic": "/assets/take_it_all_away_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/take_it_all_away_EsQ.mp3",
+      "Alto": "/assets/take_it_all_away_playalong_alto.mp3",
+      "Bari": "/assets/take_it_all_away_playalong_bari.mp3",
+      "Soprano": "/assets/take_it_all_away_playalong_soprano.mp3",
+      "Tenor": "/assets/take_it_all_away_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "tetris",
+    "name": "Tetris",
+    "mainAudio": "/assets/tetris_EsQ.mp3",
+    "sheetMusic": "/assets/tetris_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/tetris_EsQ.mp3",
+      "Alto": "/assets/tetris_playalong_alto.mp3",
+      "Soprano": "/assets/tetris_playalong_soprano.mp3",
+      "Tenor": "/assets/tetris_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "trogdor",
+    "name": "Trogdor",
+    "mainAudio": "/assets/trogdor_EsQ.mp3",
+    "sheetMusic": "/assets/trogdor_sax_quartet_AATB.mxl",
+    "instruments": {
+      "Main": "/assets/trogdor_EsQ.mp3",
+      "Alto 1": "/assets/trogdor_playalong_alto1.mp3",
+      "Alto 2": "/assets/trogdor_playalong_alto2.mp3",
+      "Tenor": "/assets/trogdor_playalong_tenor.mp3"
+    }
+  }
+]

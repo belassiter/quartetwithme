@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-songs-data.js && next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -13,6 +13,7 @@
     "@material/ripple": "^14.0.0",
     "@material/slider": "^14.0.0",
     "@material/tab-bar": "^14.0.0",
+    "@types/uuid": "^10.0.0",
     "babel-loader": "^10.0.0",
     "handlebars": "^4.7.8",
     "html-loader": "^5.1.0",
@@ -22,7 +23,8 @@
     "raw-loader": "^4.0.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tone": "^15.1.22"
+    "tone": "^15.1.22",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
