@@ -3,7 +3,7 @@
   "name": "Trogdor",
   "composer": "",
   "arranger": null,
-  "tempo": null,
+  "tempo": 135,
   "mainAudio": "/assets/trogdor_EsQ.mp3",
   "sheetMusic": "/assets/trogdor_sax_quartet_AATB.mxl",
   "instruments": {
