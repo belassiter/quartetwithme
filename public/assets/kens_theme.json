@@ -1,0 +1,15 @@
+{
+  "id": "kens_theme",
+  "name": "Kens Theme",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/kens_theme_EsQ.mp3",
+  "sheetMusic": "/assets/kens_theme_sax_quartet_AATB.mxl",
+  "instruments": {
+    "Main": "/assets/kens_theme_EsQ.mp3",
+    "Alto 1": "/assets/kens_theme_playalong_alto1.mp3",
+    "Alto 2": "/assets/kens_theme_playalong_alto2.mp3",
+    "Tenor": "/assets/kens_theme_playalong_tenor.mp3"
+  }
+}

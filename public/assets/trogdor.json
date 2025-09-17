@@ -1,0 +1,15 @@
+{
+  "id": "trogdor",
+  "name": "Trogdor",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/trogdor_EsQ.mp3",
+  "sheetMusic": "/assets/trogdor_sax_quartet_AATB.mxl",
+  "instruments": {
+    "Main": "/assets/trogdor_EsQ.mp3",
+    "Alto 1": "/assets/trogdor_playalong_alto1.mp3",
+    "Alto 2": "/assets/trogdor_playalong_alto2.mp3",
+    "Tenor": "/assets/trogdor_playalong_tenor.mp3"
+  }
+}

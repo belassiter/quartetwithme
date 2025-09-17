@@ -4,85 +4,122 @@ const path = require('path');
 const assetsDir = path.join(__dirname, '../public/assets');
 const outputFilePath = path.join(__dirname, '../public/songs-data.json');
 
-const generateSongMetadata = async (baseName, allFiles) => {
+// Helper to format a base name into a title-like name
+const formatName = (baseName) => baseName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+// Helper to discover all unique song base names from the assets directory
+const discoverBaseNames = (files) => {
+  const songBaseNames = new Set();
+  files.forEach(file => {
+    const matchEsQ = file.match(/(.*)_EsQ\.mp3$/);
+    const matchPlayalong = file.match(/(.*)_playalong_.*\.mp3$/);
+    const matchMxl = file.match(/(.*)_sax_quartet_(SATB|AATB)\.mxl$/);
+    const baseName = (matchEsQ && matchEsQ[1]) || (matchPlayalong && matchPlayalong[1]) || (matchMxl && matchMxl[1]);
+    if (baseName) {
+      songBaseNames.add(baseName);
+    }
+  });
+  return Array.from(songBaseNames);
+};
+
+// Helper to gather all file paths for a given song base name
+const gatherSongFiles = async (baseName, allFiles) => {
   const instruments = {};
 
-  // Add Main audio if it exists
-  const mainAudioPath = `${baseName}_EsQ.mp3`;
-  try {
-    await fs.access(path.join(assetsDir, mainAudioPath));
-    instruments["Main"] = `/assets/${mainAudioPath}`;
-  } catch {}
+  // Main audio
+  const mainAudioFile = `${baseName}_EsQ.mp3`;
+  if (allFiles.includes(mainAudioFile)) {
+    instruments["Main"] = `/assets/${mainAudioFile}`;
+  }
 
-  // Find and add all playalong parts
+  // Playalong parts
   const playalongRegex = new RegExp(`^${baseName}_playalong_([a-z0-9]+)\.mp3$`);
   for (const file of allFiles) {
     const match = file.match(playalongRegex);
     if (match && match[1]) {
       const partNameRaw = match[1];
-      const formattedPartName = partNameRaw
-        .replace(/([a-z])([0-9])/g, '$1 $2')
-        .replace(/\b\w/g, l => l.toUpperCase());
+      const formattedPartName = partNameRaw.replace(/([a-z])([0-9])/g, '$1 $2').replace(/\b\w/g, l => l.toUpperCase());
       instruments[formattedPartName] = `/assets/${file}`;
     }
   }
 
-  // Check for sheet music, trying different arrangements
+  // Sheet music
   let sheetMusic = null;
-  const possibleSheetMusicPaths = [
-    `${baseName}_sax_quartet_SATB.mxl`,
-    `${baseName}_sax_quartet_AATB.mxl`
-  ];
-
+  const possibleSheetMusicPaths = [`${baseName}_sax_quartet_SATB.mxl`, `${baseName}_sax_quartet_AATB.mxl`];
   for (const p of possibleSheetMusicPaths) {
-    try {
-      await fs.access(path.join(assetsDir, p));
+    if (allFiles.includes(p)) {
       sheetMusic = `/assets/${p}`;
-      break; // Found one, stop looking
-    } catch {}
+      break;
+    }
   }
 
   return {
-    id: baseName,
-    name: baseName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
     mainAudio: instruments["Main"] || null,
     sheetMusic: sheetMusic,
     instruments: instruments
   };
 };
 
-async function generateSongsData() {
-  try {
-    const files = await fs.readdir(assetsDir);
-    const songBaseNames = new Set();
+async function seedMetadataFiles() {
+  console.log('Seeding metadata files...');
+  const allFiles = await fs.readdir(assetsDir);
+  const songBaseNames = discoverBaseNames(allFiles);
 
-    // Discover base names from any relevant file pattern
-    files.forEach(file => {
-      const matchEsQ = file.match(/(.*)_EsQ\.mp3$/);
-      const matchPlayalong = file.match(/(.*)_playalong_.*\.mp3$/);
-      const matchMxl = file.match(/(.*)_sax_quartet_(SATB|AATB)\.mxl$/);
+  for (const baseName of songBaseNames) {
+    const metadataFilePath = path.join(assetsDir, `${baseName}.json`);
+    try {
+      await fs.access(metadataFilePath);
+    } catch (error) {
+      // File does not exist, create a skeleton
+      console.log(`  -> Creating skeleton metadata for ${baseName}...`);
 
-      const baseName = (matchEsQ && matchEsQ[1]) || 
-                       (matchPlayalong && matchPlayalong[1]) || 
-                       (matchMxl && matchMxl[1]);
+      const songFiles = await gatherSongFiles(baseName, allFiles);
       
-      if (baseName) {
-        songBaseNames.add(baseName);
-      }
-    });
+      const newMetadata = {
+        id: baseName,
+        name: formatName(baseName),
+        composer: "", // To be filled in manually
+        arranger: null,
+        tempo: null, // To be filled in manually for overrides
+        ...songFiles
+      };
 
-    const songPromises = Array.from(songBaseNames).map(baseName => generateSongMetadata(baseName, files));
-    const availableSongs = await Promise.all(songPromises);
+      await fs.writeFile(metadataFilePath, JSON.stringify(newMetadata, null, 2));
+    }
+  }
+  console.log('Seeding complete.');
+}
 
-    // Filter out songs that don't have at least a main audio track
-    const validSongs = availableSongs.filter(song => song.mainAudio);
+async function compileSongsData() {
+  console.log('Compiling final songs-data.json...');
+  const allFiles = await fs.readdir(assetsDir);
+  const metadataFiles = allFiles.filter(f => f.endsWith('.json') && f !== path.basename(outputFilePath));
 
-    await fs.writeFile(outputFilePath, JSON.stringify(validSongs, null, 2));
-    console.log(`Generated ${validSongs.length} songs data to ${outputFilePath}`);
+  const allSongs = [];
+  for (const metadataFile of metadataFiles) {
+    try {
+      const filePath = path.join(assetsDir, metadataFile);
+      const content = await fs.readFile(filePath, 'utf-8');
+      allSongs.push(JSON.parse(content));
+    } catch (err) {
+      console.error(`Error reading or parsing metadata file ${metadataFile}:`, err);
+    }
+  }
+
+  allSongs.sort((a, b) => a.name.localeCompare(b.name));
+
+  await fs.writeFile(outputFilePath, JSON.stringify(allSongs, null, 2));
+  console.log(`Successfully compiled ${allSongs.length} songs to ${outputFilePath}`);
+}
+
+async function main() {
+  try {
+    await seedMetadataFiles();
+    await compileSongsData();
   } catch (error) {
-    console.error('Error generating songs data:', error);
-    process.exit(1); // Exit with error code
+    console.error('An error occurred during the script execution:', error);
+    process.exit(1);
   }
 }
 
-generateSongsData();
+main();

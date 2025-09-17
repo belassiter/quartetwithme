@@ -1,0 +1,15 @@
+{
+  "id": "sugar_rum_cherry",
+  "name": "Sugar Rum Cherry",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/sugar_rum_cherry_EsQ.mp3",
+  "sheetMusic": "/assets/sugar_rum_cherry_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/sugar_rum_cherry_EsQ.mp3",
+    "Alto": "/assets/sugar_rum_cherry_playalong_alto.mp3",
+    "Soprano": "/assets/sugar_rum_cherry_playalong_soprano.mp3",
+    "Tenor": "/assets/sugar_rum_cherry_playalong_tenor.mp3"
+  }
+}

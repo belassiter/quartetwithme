@@ -150,14 +150,13 @@ export default function Home() {
           osmd.clear(); // Clear if no sheet music
         }
 
-        if (osmd.Sheet?.DefaultStartTempoInBpm) {
-          const initialTempo = osmd.Sheet.DefaultStartTempoInBpm;
-          tempoRef.current = initialTempo;
-          setTempo(initialTempo);
-          Tone.Transport.bpm.value = initialTempo;
-          setTempoMin(Math.round(initialTempo * 0.66));
-          setTempoMax(Math.round(initialTempo * 1.15));
-        }
+        const tempoFromSheet = osmd.Sheet?.DefaultStartTempoInBpm;
+        const initialTempo = currentSong.tempo || tempoFromSheet || 120;
+        tempoRef.current = initialTempo;
+        setTempo(initialTempo);
+        Tone.Transport.bpm.value = initialTempo;
+        setTempoMin(Math.round(initialTempo * 0.66));
+        setTempoMax(Math.round(initialTempo * 1.15));
 
         console.log("Loading finished: isLoaded = true");
         setIsLoaded(true); // <-- Spinner should hide here

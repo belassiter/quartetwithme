@@ -1,0 +1,15 @@
+{
+  "id": "flyswatter",
+  "name": "Flyswatter",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/flyswatter_EsQ.mp3",
+  "sheetMusic": "/assets/flyswatter_sax_quartet_AATB.mxl",
+  "instruments": {
+    "Main": "/assets/flyswatter_EsQ.mp3",
+    "Alto 1": "/assets/flyswatter_playalong_alto1.mp3",
+    "Alto 2": "/assets/flyswatter_playalong_alto2.mp3",
+    "Tenor": "/assets/flyswatter_playalong_tenor.mp3"
+  }
+}

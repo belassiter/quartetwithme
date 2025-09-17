@@ -1,0 +1,15 @@
+{
+  "id": "tetris",
+  "name": "Tetris",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/tetris_EsQ.mp3",
+  "sheetMusic": "/assets/tetris_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/tetris_EsQ.mp3",
+    "Alto": "/assets/tetris_playalong_alto.mp3",
+    "Soprano": "/assets/tetris_playalong_soprano.mp3",
+    "Tenor": "/assets/tetris_playalong_tenor.mp3"
+  }
+}

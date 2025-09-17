@@ -1,0 +1,15 @@
+{
+  "id": "ghostbusters",
+  "name": "Ghostbusters",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/ghostbusters_EsQ.mp3",
+  "sheetMusic": "/assets/ghostbusters_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/ghostbusters_EsQ.mp3",
+    "Alto": "/assets/ghostbusters_playalong_alto.mp3",
+    "Soprano": "/assets/ghostbusters_playalong_soprano.mp3",
+    "Tenor": "/assets/ghostbusters_playalong_tenor.mp3"
+  }
+}

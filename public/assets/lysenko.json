@@ -1,0 +1,16 @@
+{
+  "id": "lysenko",
+  "name": "Lysenko",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/lysenko_EsQ.mp3",
+  "sheetMusic": "/assets/lysenko_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/lysenko_EsQ.mp3",
+    "Alto": "/assets/lysenko_playalong_alto.mp3",
+    "Bari": "/assets/lysenko_playalong_bari.mp3",
+    "Soprano": "/assets/lysenko_playalong_soprano.mp3",
+    "Tenor": "/assets/lysenko_playalong_tenor.mp3"
+  }
+}

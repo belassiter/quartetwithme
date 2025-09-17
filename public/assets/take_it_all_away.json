@@ -1,0 +1,15 @@
+{
+  "id": "take_it_all_away",
+  "name": "Take It All Away",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/take_it_all_away_EsQ.mp3",
+  "sheetMusic": "/assets/take_it_all_away_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/take_it_all_away_EsQ.mp3",
+    "Alto": "/assets/take_it_all_away_playalong_alto.mp3",
+    "Soprano": "/assets/take_it_all_away_playalong_soprano.mp3",
+    "Tenor": "/assets/take_it_all_away_playalong_tenor.mp3"
+  }
+}

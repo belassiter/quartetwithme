@@ -1,0 +1,15 @@
+{
+  "id": "happy",
+  "name": "Happy",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/happy_EsQ.mp3",
+  "sheetMusic": "/assets/happy_sax_quartet_SATB.mxl",
+  "instruments": {
+    "Main": "/assets/happy_EsQ.mp3",
+    "Alto": "/assets/happy_playalong_alto.mp3",
+    "Soprano": "/assets/happy_playalong_soprano.mp3",
+    "Tenor": "/assets/happy_playalong_tenor.mp3"
+  }
+}

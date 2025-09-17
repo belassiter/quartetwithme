@@ -1,0 +1,15 @@
+{
+  "id": "i_get_around",
+  "name": "I Get Around",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/i_get_around_EsQ.mp3",
+  "sheetMusic": "/assets/i_get_around_sax_quartet_AATB.mxl",
+  "instruments": {
+    "Main": "/assets/i_get_around_EsQ.mp3",
+    "Alto 1": "/assets/i_get_around_playalong_alto1.mp3",
+    "Alto 2": "/assets/i_get_around_playalong_alto2.mp3",
+    "Tenor": "/assets/i_get_around_playalong_tenor.mp3"
+  }
+}

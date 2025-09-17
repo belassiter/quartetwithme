@@ -3,6 +3,7 @@ export interface Song {
   name: string;
   composer?: string;
   genre?: string;
+  tempo?: number;
   mainAudio: string | null;
   sheetMusic: string | null;
   instruments: {

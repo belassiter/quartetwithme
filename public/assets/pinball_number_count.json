@@ -1,0 +1,15 @@
+{
+  "id": "pinball_number_count",
+  "name": "Pinball Number Count",
+  "composer": "",
+  "arranger": null,
+  "tempo": null,
+  "mainAudio": "/assets/pinball_number_count_EsQ.mp3",
+  "sheetMusic": "/assets/pinball_number_count_sax_quartet_AATB.mxl",
+  "instruments": {
+    "Main": "/assets/pinball_number_count_EsQ.mp3",
+    "Alto 1": "/assets/pinball_number_count_playalong_alto1.mp3",
+    "Alto 2": "/assets/pinball_number_count_playalong_alto2.mp3",
+    "Tenor": "/assets/pinball_number_count_playalong_tenor.mp3"
+  }
+}
