@@ -32,6 +32,7 @@ export default function Home() {
   const sheetMusicContainerRef = useRef<HTMLDivElement>(null);
   const osmdRef = useRef<OpenSheetMusicDisplay | null>(null);
   const playersRef = useRef<Tone.Players | null>(null);
+  const metronomePlayerRef = useRef<Tone.Player | null>(null);
   const pitchShiftRef = useRef<Tone.PitchShift | null>(null);
   const animationFrameId = useRef<number | null>(null);
   const currentNoteIndex = useRef(0);
@@ -69,7 +70,10 @@ export default function Home() {
       .then(res => res.json())
       .then((data: Song[]) => {
         setSongs(data);
-        if (data.length > 0) {
+        const defaultSong = data.find(song => song.name === "Take It All Away");
+        if (defaultSong) {
+          setCurrentSong(defaultSong);
+        } else if (data.length > 0) {
           setCurrentSong(data[0]);
         }
       })
@@ -96,6 +100,8 @@ export default function Home() {
       try {
         const osmd = new OpenSheetMusicDisplay(container, { autoResize: true, backend: "svg", drawTitle: true, followCursor: true });
         osmdRef.current = osmd;
+
+        metronomePlayerRef.current = new Tone.Player({ url: "/assets/250552__druminfected__metronome.mp3", volume: -2 }).toDestination();
 
         const players: { [key: string]: InstanceType<typeof Tone.Buffer> } = {};
         const bufferPromises = Object.entries(currentSong.instruments)
@@ -192,6 +198,7 @@ export default function Home() {
       osmdRef.current?.clear();
       playersRef.current?.dispose();
       pitchShiftRef.current?.dispose();
+      metronomePlayerRef.current?.dispose();
       Tone.Transport.stop();
     };
   }, []);
@@ -242,7 +249,21 @@ export default function Home() {
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     } else {
       await Tone.start();
-      Tone.Transport.start();
+      if (Tone.Transport.state === "stopped" && metronomePlayerRef.current && tempoRef.current) {
+        const oneBeatDuration = 60 / tempoRef.current;
+        const countInDuration = oneBeatDuration * 8;
+        const now = Tone.now();
+        for (let i = 0; i < 8; i++) {
+          if (i === 1 || i === 3) {
+            continue;
+          }
+          metronomePlayerRef.current.start(now + i * oneBeatDuration);
+        }
+        Tone.Transport.start(now + countInDuration);
+      } else {
+        Tone.Transport.start();
+      }
+
       if (osmdRef.current?.cursor && osmdRef.current.Sheet) {
         osmdRef.current.cursor.show();
         currentNoteIndex.current = 0;
