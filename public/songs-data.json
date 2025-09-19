@@ -91,22 +91,6 @@
     }
   },
   {
-    "id": "lysenko",
-    "name": "Lysenko String Quartet in d minor",
-    "composer": "Mykola Lysenko",
-    "arranger": null,
-    "tempo": 120,
-    "mainAudio": "/assets/lysenko_EsQ.mp3",
-    "sheetMusic": "/assets/lysenko_sax_quartet_SATB.mxl",
-    "instruments": {
-      "Main": "/assets/lysenko_EsQ.mp3",
-      "Alto": "/assets/lysenko_playalong_alto.mp3",
-      "Bari": "/assets/lysenko_playalong_bari.mp3",
-      "Soprano": "/assets/lysenko_playalong_soprano.mp3",
-      "Tenor": "/assets/lysenko_playalong_tenor.mp3"
-    }
-  },
-  {
     "id": "pinball_number_count",
     "name": "Pinball Number Count",
     "composer": "Walt Kraemer",
@@ -119,6 +103,22 @@
       "Alto 1": "/assets/pinball_number_count_playalong_alto1.mp3",
       "Alto 2": "/assets/pinball_number_count_playalong_alto2.mp3",
       "Tenor": "/assets/pinball_number_count_playalong_tenor.mp3"
+    }
+  },
+  {
+    "id": "lysenko",
+    "name": "String Quartet in d minor",
+    "composer": "Mykola Lysenko",
+    "arranger": null,
+    "tempo": 120,
+    "mainAudio": "/assets/lysenko_EsQ.mp3",
+    "sheetMusic": "/assets/lysenko_sax_quartet_SATB.mxl",
+    "instruments": {
+      "Main": "/assets/lysenko_EsQ.mp3",
+      "Alto": "/assets/lysenko_playalong_alto.mp3",
+      "Bari": "/assets/lysenko_playalong_bari.mp3",
+      "Soprano": "/assets/lysenko_playalong_soprano.mp3",
+      "Tenor": "/assets/lysenko_playalong_tenor.mp3"
     }
   },
   {
