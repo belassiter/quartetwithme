@@ -2,7 +2,7 @@
   {
     "id": "battlefield_1942",
     "name": "Battlefield 1942",
-    "composer": "",
+    "composer": "Joel Eriksson",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/battlefield_1942_EsQ.mp3",
@@ -18,7 +18,7 @@
   {
     "id": "flyswatter",
     "name": "Flyswatter",
-    "composer": "",
+    "composer": "Tanaka/Yoshitomi/Totaka",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/flyswatter_EsQ.mp3",
@@ -33,7 +33,7 @@
   {
     "id": "ghostbusters",
     "name": "Ghostbusters",
-    "composer": "",
+    "composer": "Ray Parker Jr.",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/ghostbusters_EsQ.mp3",
@@ -48,7 +48,7 @@
   {
     "id": "happy",
     "name": "Happy",
-    "composer": "",
+    "composer": "Pharrell Williams",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/happy_EsQ.mp3",
@@ -63,7 +63,7 @@
   {
     "id": "i_get_around",
     "name": "I Get Around",
-    "composer": "",
+    "composer": "Brian Wilson & Mike Love",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/i_get_around_EsQ.mp3",
@@ -78,7 +78,7 @@
   {
     "id": "kens_theme",
     "name": "Kens Theme",
-    "composer": "",
+    "composer": "Yoko Shimomura",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/kens_theme_EsQ.mp3",
@@ -109,7 +109,7 @@
   {
     "id": "pinball_number_count",
     "name": "Pinball Number Count",
-    "composer": "",
+    "composer": "Walt Kraemer",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/pinball_number_count_EsQ.mp3",
@@ -124,8 +124,8 @@
   {
     "id": "sugar_rum_cherry",
     "name": "Sugar Rum Cherry",
-    "composer": "",
-    "arranger": null,
+    "composer": "Peter Ilyich Tchaikovsky",
+    "arranger": "Strayhorn/Lassiter",
     "tempo": null,
     "mainAudio": "/assets/sugar_rum_cherry_EsQ.mp3",
     "sheetMusic": "/assets/sugar_rum_cherry_sax_quartet_SATB.mxl",
@@ -139,7 +139,7 @@
   {
     "id": "take_it_all_away",
     "name": "Take It All Away",
-    "composer": "",
+    "composer": "John McCrea",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/take_it_all_away_EsQ.mp3",
@@ -154,7 +154,7 @@
   {
     "id": "tetris",
     "name": "Tetris",
-    "composer": "",
+    "composer": "Traditional",
     "arranger": null,
     "tempo": null,
     "mainAudio": "/assets/tetris_EsQ.mp3",
@@ -169,7 +169,7 @@
   {
     "id": "trogdor",
     "name": "Trogdor",
-    "composer": "",
+    "composer": "Strong Bad",
     "arranger": null,
     "tempo": 135,
     "mainAudio": "/assets/trogdor_EsQ.mp3",

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Song } from '../interfaces/Song';
 
 interface SongSelectionModalProps {
@@ -10,6 +11,8 @@ interface SongSelectionModalProps {
 }
 
 export default function SongSelectionModal({ isOpen, onClose, onSelectSong, songs }: SongSelectionModalProps) {
+  const [filterText, setFilterText] = useState('');
+
   if (!isOpen) {
     return null;
   }
@@ -19,6 +22,11 @@ export default function SongSelectionModal({ isOpen, onClose, onSelectSong, song
     onClose();
   };
 
+  const filteredSongs = songs.filter(song =>
+    song.name.toLowerCase().includes(filterText.toLowerCase()) ||
+    (song.composer && song.composer.toLowerCase().includes(filterText.toLowerCase()))
+  );
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -27,8 +35,15 @@ export default function SongSelectionModal({ isOpen, onClose, onSelectSong, song
           <button onClick={onClose} className="modal-close-button">&times;</button>
         </div>
         <div className="modal-body">
+          <input
+            type="text"
+            placeholder="Filter songs..."
+            value={filterText}
+            onChange={(e) => setFilterText(e.target.value)}
+            className="song-filter-input"
+          />
           <ul>
-            {songs.map((song) => (
+            {filteredSongs.map((song) => (
               <li key={song.id} onClick={() => handleSelect(song)} className="song-item">
                 <h3>{song.name}</h3>
                 {song.composer && <p>{song.composer}</p>}
