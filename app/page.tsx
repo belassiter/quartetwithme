@@ -298,8 +298,7 @@ export default function Home() {
     while (!iterator.EndReached) {
       const timestamp = iterator.currentTimeStamp.RealValue;
       if (timestamp >= 0 && !timestamps.has(timestamp) && iterator.CurrentVoiceEntries?.some(ve => ve.ParentVoice.Parent.Visible)) {
-        const timeSignature = iterator.CurrentMeasure.ActiveTimeSignature;
-        const ticks = (timestamp * timeSignature.Numerator * (4 / timeSignature.Denominator)) * ppq;
+        const ticks = timestamp * 4 * ppq;
         allNotes.push({ timestamp, ticks });
         timestamps.add(timestamp);
       }
