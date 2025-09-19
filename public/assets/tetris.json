@@ -1,7 +1,7 @@
 {
   "id": "tetris",
   "name": "Tetris",
-  "composer": "",
+  "composer": "Traditional",
   "arranger": null,
   "tempo": null,
   "mainAudio": "/assets/tetris_EsQ.mp3",

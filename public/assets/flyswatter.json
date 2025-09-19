@@ -1,7 +1,7 @@
 {
   "id": "flyswatter",
   "name": "Flyswatter",
-  "composer": "",
+  "composer": "Tanaka/Yoshitomi/Totaka",
   "arranger": null,
   "tempo": null,
   "mainAudio": "/assets/flyswatter_EsQ.mp3",
