@@ -2,8 +2,9 @@
   "id": "pinball_number_count",
   "name": "Pinball Number Count",
   "composer": "Walt Kraemer",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "TV",
   "mainAudio": "/assets/pinball_number_count_EsQ.mp3",
   "sheetMusic": "/assets/pinball_number_count_sax_quartet_AATB.mxl",
   "instruments": {

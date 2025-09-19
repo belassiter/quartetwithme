@@ -4,6 +4,7 @@
   "composer": "Peter Ilyich Tchaikovsky",
   "arranger": "Strayhorn/Lassiter",
   "tempo": null,
+  "style": "Jazz",
   "mainAudio": "/assets/sugar_rum_cherry_EsQ.mp3",
   "sheetMusic": "/assets/sugar_rum_cherry_sax_quartet_SATB.mxl",
   "instruments": {

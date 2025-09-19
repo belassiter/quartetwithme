@@ -2,8 +2,9 @@
   "id": "lysenko",
   "name": "String Quartet in d minor",
   "composer": "Mykola Lysenko",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": 120,
+  "style": "Classical",
   "mainAudio": "/assets/lysenko_EsQ.mp3",
   "sheetMusic": "/assets/lysenko_sax_quartet_SATB.mxl",
   "instruments": {

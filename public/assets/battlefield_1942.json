@@ -2,8 +2,9 @@
   "id": "battlefield_1942",
   "name": "Battlefield 1942",
   "composer": "Joel Eriksson",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Game",
   "mainAudio": "/assets/battlefield_1942_EsQ.mp3",
   "sheetMusic": "/assets/battlefield_1942_sax_quartet_SATB.mxl",
   "instruments": {

@@ -1,9 +1,10 @@
 {
   "id": "kens_theme",
-  "name": "Kens Theme",
+  "name": "Ken's Theme",
   "composer": "Yoko Shimomura",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Game",
   "mainAudio": "/assets/kens_theme_EsQ.mp3",
   "sheetMusic": "/assets/kens_theme_sax_quartet_AATB.mxl",
   "instruments": {

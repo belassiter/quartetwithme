@@ -2,8 +2,9 @@
   "id": "trogdor",
   "name": "Trogdor",
   "composer": "Strong Bad",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": 135,
+  "style": "Game",
   "mainAudio": "/assets/trogdor_EsQ.mp3",
   "sheetMusic": "/assets/trogdor_sax_quartet_AATB.mxl",
   "instruments": {

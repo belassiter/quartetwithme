@@ -24,7 +24,8 @@ export default function SongSelectionModal({ isOpen, onClose, onSelectSong, song
 
   const filteredSongs = songs.filter(song =>
     song.name.toLowerCase().includes(filterText.toLowerCase()) ||
-    (song.composer && song.composer.toLowerCase().includes(filterText.toLowerCase()))
+    (song.composer && song.composer.toLowerCase().includes(filterText.toLowerCase())) ||
+    (song.style && song.style.toLowerCase().includes(filterText.toLowerCase()))
   );
 
   return (
@@ -46,7 +47,7 @@ export default function SongSelectionModal({ isOpen, onClose, onSelectSong, song
             {filteredSongs.map((song) => (
               <li key={song.id} onClick={() => handleSelect(song)} className="song-item">
                 <h3>{song.name}</h3>
-                {song.composer && <p>{song.composer}</p>}
+                {song.composer && <p>{song.composer} {song.style && `(${song.style})`}</p>}
               </li>
             ))}
           </ul>

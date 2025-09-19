@@ -2,8 +2,9 @@
   "id": "tetris",
   "name": "Tetris",
   "composer": "Traditional",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Game",
   "mainAudio": "/assets/tetris_EsQ.mp3",
   "sheetMusic": "/assets/tetris_sax_quartet_SATB.mxl",
   "instruments": {

@@ -2,8 +2,9 @@
   "id": "i_get_around",
   "name": "I Get Around",
   "composer": "Brian Wilson & Mike Love",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Pop",
   "mainAudio": "/assets/i_get_around_EsQ.mp3",
   "sheetMusic": "/assets/i_get_around_sax_quartet_AATB.mxl",
   "instruments": {

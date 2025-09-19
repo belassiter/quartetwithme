@@ -1,9 +1,10 @@
 {
   "id": "flyswatter",
-  "name": "Flyswatter",
+  "name": "Flyswatter from Mario Paint",
   "composer": "Tanaka/Yoshitomi/Totaka",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Game",
   "mainAudio": "/assets/flyswatter_EsQ.mp3",
   "sheetMusic": "/assets/flyswatter_sax_quartet_AATB.mxl",
   "instruments": {

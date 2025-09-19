@@ -2,8 +2,9 @@
   "id": "take_it_all_away",
   "name": "Take It All Away",
   "composer": "John McCrea",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Alternative",
   "mainAudio": "/assets/take_it_all_away_EsQ.mp3",
   "sheetMusic": "/assets/take_it_all_away_sax_quartet_SATB.mxl",
   "instruments": {

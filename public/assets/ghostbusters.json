@@ -2,8 +2,9 @@
   "id": "ghostbusters",
   "name": "Ghostbusters",
   "composer": "Ray Parker Jr.",
-  "arranger": null,
+  "arranger": "Brian Einstein Lassiter",
   "tempo": null,
+  "style": "Movie",
   "mainAudio": "/assets/ghostbusters_EsQ.mp3",
   "sheetMusic": "/assets/ghostbusters_sax_quartet_SATB.mxl",
   "instruments": {
